@@ -25,14 +25,14 @@ fun LandingScreen(
             LogoImage(
                 modifier = Modifier.weight(1f)
             )
-            LandingButtons(modifier = Modifier.weight(1f), viewModel)
+            LandingButtons(modifier = Modifier.weight(1f), viewModel = viewModel)
         },
         columnContent = {
             Spacer(modifier = Modifier.height(80.sdp))
             LogoImage(
                 modifier = Modifier.weight(1f)
             )
-            LandingButtons(modifier = Modifier.weight(1f).padding(bottom = 50.sdp), viewModel)
+            LandingButtons(modifier = Modifier.weight(1f).padding(bottom = 50.sdp), viewModel = viewModel)
         }
     )
 }

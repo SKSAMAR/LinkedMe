@@ -1,5 +1,6 @@
 package com.samar.linkedmewithmaterial3.presentation.landing.component
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -11,21 +12,34 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.FacebookSdk
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.samar.linkedmewithmaterial3.util.component.sdp
 import com.samar.linkedmewithmaterial3.R
 import com.samar.linkedmewithmaterial3.presentation.landing.LandingViewModel
+import com.samar.linkedmewithmaterial3.util.ViewUtils.findActivity
 import com.samar.linkedmewithmaterial3.util.component.textSdp
+import java.util.*
 
 @Composable
 fun LandingButtons(
     modifier: Modifier = Modifier,
+    context: Context = LocalContext.current,
     viewModel: LandingViewModel
 ) {
     Column(
@@ -90,7 +104,6 @@ fun LandingButtons(
         }
 
         Spacer(modifier = Modifier.height(10.sdp))
-
         Row(
             modifier = Modifier
                 .background(
@@ -104,7 +117,7 @@ fun LandingButtons(
                 )
                 .clip(RoundedCornerShape(22.sdp))
                 .clickable {
-                    viewModel.loginWithFacebookAction()
+                    viewModel.loginWithFacebookAction(context)
                 }
                 .fillMaxWidth(.9f),
             horizontalArrangement = Arrangement.Center,
