@@ -1,4 +1,4 @@
-package com.samar.linkedmewithmaterial3
+package com.samar.linkedmewithmaterial3.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,9 +7,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.samar.linkedmewithmaterial3.ui.theme.LinkedMewithMaterial3Theme
+import com.samar.linkedmewithmaterial3.presentation.ui.theme.LinkedMewithMaterial3Theme
 
-class MainActivity : ComponentActivity() {
+class LandingActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

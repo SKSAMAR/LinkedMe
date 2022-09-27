@@ -1,4 +1,4 @@
-package com.samar.linkedmewithmaterial3.ui.theme
+package com.samar.linkedmewithmaterial3.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
