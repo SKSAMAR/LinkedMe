@@ -13,7 +13,9 @@ import com.samar.linkedmewithmaterial3.presentation.landing.component.LogoImage
 import com.samar.linkedmewithmaterial3.util.component.sdp
 
 @Composable
-fun LandingScreen(){
+fun LandingScreen(
+    viewModel: LandingViewModel
+){
     ScreenConfig(
         horizontalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -23,14 +25,14 @@ fun LandingScreen(){
             LogoImage(
                 modifier = Modifier.weight(1f)
             )
-            LandingButtons(modifier = Modifier.weight(1f))
+            LandingButtons(modifier = Modifier.weight(1f), viewModel)
         },
         columnContent = {
             Spacer(modifier = Modifier.height(80.sdp))
             LogoImage(
                 modifier = Modifier.weight(1f)
             )
-            LandingButtons(modifier = Modifier.weight(1f).padding(bottom = 50.sdp))
+            LandingButtons(modifier = Modifier.weight(1f).padding(bottom = 50.sdp), viewModel)
         }
     )
 }

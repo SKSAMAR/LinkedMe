@@ -3,6 +3,7 @@ package com.samar.linkedmewithmaterial3.presentation.landing.component
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -12,18 +13,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.samar.linkedmewithmaterial3.util.component.sdp
 import com.samar.linkedmewithmaterial3.R
+import com.samar.linkedmewithmaterial3.presentation.landing.LandingViewModel
 import com.samar.linkedmewithmaterial3.util.component.textSdp
 
-@Preview(showBackground = true)
 @Composable
 fun LandingButtons(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: LandingViewModel
 ) {
     Column(
         modifier = modifier,
@@ -31,8 +34,13 @@ fun LandingButtons(
         verticalArrangement = Arrangement.Bottom
     ) {
         Card(
-            modifier = Modifier.fillMaxWidth(.9f),
-            shape =  RoundedCornerShape(22.sdp),
+            modifier = Modifier
+                .fillMaxWidth(.9f)
+                .clip(RoundedCornerShape(22.sdp))
+                .clickable {
+                    viewModel.registerAction()
+                },
+            shape = RoundedCornerShape(22.sdp),
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primary)
         ) {
             Text(
@@ -42,9 +50,9 @@ fun LandingButtons(
                 text = "Join now"
             )
         }
-        
+
         Spacer(modifier = Modifier.height(10.sdp))
-        
+
         Row(
             modifier = Modifier
                 .background(
@@ -56,10 +64,14 @@ fun LandingButtons(
                     color = MaterialTheme.colorScheme.inverseSurface,
                     shape = RoundedCornerShape(22.sdp)
                 )
-                .fillMaxWidth(.9f),
+                .clip(RoundedCornerShape(22.sdp))
+                .fillMaxWidth(.9f)
+                .clickable {
+                    viewModel.loginWithGoogleAction()
+                },
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
-        ){
+        ) {
 
             Image(
                 modifier = Modifier
@@ -90,10 +102,14 @@ fun LandingButtons(
                     color = MaterialTheme.colorScheme.inverseSurface,
                     shape = RoundedCornerShape(22.sdp)
                 )
+                .clip(RoundedCornerShape(22.sdp))
+                .clickable {
+                    viewModel.loginWithFacebookAction()
+                }
                 .fillMaxWidth(.9f),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
-        ){
+        ) {
 
             Image(
                 modifier = Modifier
@@ -114,6 +130,10 @@ fun LandingButtons(
         Spacer(modifier = Modifier.height(10.sdp))
 
         Text(
+            modifier = Modifier
+                .clickable {
+                    viewModel.loginAction()
+                },
             text = "Sign in",
             color = MaterialTheme.colorScheme.primary,
             fontWeight = FontWeight.SemiBold

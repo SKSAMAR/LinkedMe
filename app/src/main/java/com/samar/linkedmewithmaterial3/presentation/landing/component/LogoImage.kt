@@ -5,6 +5,8 @@ import androidx.compose.material.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import com.samar.linkedmewithmaterial3.R
 
@@ -13,7 +15,7 @@ fun LogoImage(
     modifier: Modifier = Modifier
 ){
     Icon(
-        modifier = modifier.aspectRatio(0.5625f),
+        modifier = modifier.aspectRatio(0.5625f).clip(RectangleShape),
         painter = painterResource(id = R.drawable.logo),
         contentDescription = null,
         tint = MaterialTheme.colorScheme.primary
